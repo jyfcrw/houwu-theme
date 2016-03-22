@@ -1,0 +1,31 @@
+{{!< default}}
+
+{{#post}}
+
+<header class="header page-head {{post_class}} page-{{slug}} {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}">
+    <h2>
+        {{^has tag='最新案例'}}
+            <img src="{{asset_by "images/pagetitle-%s.jpg" value=slug}}" alt="{{title}}" />
+        {{else}}
+            <span>{{title}}</span>
+        {{/has}}
+    </h2>
+    {{#has tag='最新案例'}}
+        <a class="back" href="javascript:history.go(-1);">
+            <img src="{{asset "images/arrow-left.png"}}" alt="后退" />
+        </a>
+    {{/has}}
+</header>
+
+<div class="page-content {{post_class}} page-{{slug}}">
+    <div class="container">
+        {{content}}
+    </div>
+</div>
+
+{{#has tag='最新案例'}}
+<link href="{{asset "css/viewer.min.css"}}" rel="stylesheet" />
+<script src="{{asset "js/viewer.min.js"}}"></script>
+{{/has}}
+
+{{/post}}
